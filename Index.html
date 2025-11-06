@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud y Bienestar - Evaluación 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header semántico -->
+    <header class="header">
+        <div class="header-content">
+            <h1>💚 Salud & Bienestar</h1>
+            <p>Tu guía para una vida saludable</p>
+        </div>
+    </header>
+
+    <!-- Navegación semántica -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+            <li><a href="#nutricion" class="nav-link" data-section="nutricion">Nutrición</a></li>
+            <li><a href="#ejercicio" class="nav-link" data-section="ejercicio">Ejercicio</a></li>
+            <li><a href="#mental" class="nav-link" data-section="mental">Salud Mental</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal semántico -->
+    <main class="main-content">
+        <!-- Sección Inicio -->
+        <section id="inicio" class="content-section active">
+            <h2>Bienvenido a tu Salud</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>¿Por qué es importante la salud?</h3>
+                    <p>Mantener una buena salud es fundamental para disfrutar de una vida plena y productiva.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona meditando en la naturaleza" class="health-image">
+                        <button class="toggle-btn" onclick="toggleDescription()">💡 Ver beneficio</button>
+                        <div id="health-description" class="description hidden">
+                            <p><strong>Beneficio:</strong> La meditación regular reduce el estrés, mejora la concentración y promueve el bienestar emocional. Solo 10 minutos al día pueden hacer una gran diferencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Nutrición -->
+        <section id="nutricion" class="content-section">
+            <h2>Nutrición Saludable</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Alimentación Balanceada</h3>
+                    <p>Descubre los principios básicos de una nutrición adecuada para tu cuerpo.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Alimentos saludables variados" class="health-image">
+                        <button class="toggle-btn" onclick="toggleNutritionTip()">🥗 Consejo nutricional</button>
+                        <div id="nutrition-tip" class="description hidden">
+                            <p><strong>Consejo:</strong> Incluye al menos 5 porciones de frutas y verduras de diferentes colores en tu día. Cada color proporciona nutrientes diferentes esenciales para tu salud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Ejercicio -->
+        <section id="ejercicio" class="content-section">
+            <h2>Ejercicio Físico</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Actividad Física Regular</h3>
+                    <p>El ejercicio es clave para mantener un cuerpo sano y una mente clara.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona haciendo ejercicio al aire libre" class="health-image">
+                        <button class="toggle-btn" onclick="toggleExerciseTip()">💪 Tip de ejercicio</button>
+                        <div id="exercise-tip" class="description hidden">
+                            <p><strong>Recomendación:</strong> Realiza al menos 150 minutos de actividad moderada o 75 minutos de actividad intensa por semana. ¡Caminar cuenta!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Salud Mental -->
+        <section id="mental" class="content-section">
+            <h2>Salud Mental</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3>Cuidado Emocional</h3>
+                    <p>Tu bienestar mental es igual de importante que tu salud física.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona practicando mindfulness" class="health-image">
+                        <button class="toggle-btn" onclick="toggleMentalTip()">🧠 Técnica mental</button>
+                        <div id="mental-tip" class="description hidden">
+                            <p><strong>Técnica:</strong> Practica la respiración 4-7-8: inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer semántico -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Salud y Bienestar - Evaluación 1 Programación Multimedia</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
