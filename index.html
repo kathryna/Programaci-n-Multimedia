@@ -25,10 +25,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
+            min-height: 100vh;
         }
 
         /* Header semántico */
@@ -88,6 +89,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            min-height: 60vh;
         }
 
         .content-section {
@@ -100,14 +102,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
@@ -145,11 +141,13 @@
         .info-card p {
             color: var(--text-light);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         /* Elementos interactivos */
         .interactive-element {
             text-align: center;
+            margin-top: 1rem;
         }
 
         .health-image {
@@ -160,6 +158,7 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             box-shadow: var(--shadow);
+            border: 3px solid var(--primary-color);
         }
 
         .toggle-btn {
@@ -172,7 +171,7 @@
             font-size: 1rem;
             font-weight: 500;
             transition: var(--transition);
-            margin-bottom: 1rem;
+            margin: 0.5rem 0;
         }
 
         .toggle-btn:hover {
@@ -186,6 +185,7 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary-color);
             margin-top: 1rem;
+            text-align: left;
         }
 
         .description p {
@@ -240,20 +240,6 @@
                 font-size: 1.5rem;
             }
         }
-
-        @media (max-width: 480px) {
-            .header-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .info-card {
-                padding: 1.5rem;
-            }
-
-            .health-image {
-                height: 200px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -283,15 +269,14 @@
             <div class="content-grid">
                 <div class="info-card">
                     <h3>¿Por qué es importante la salud?</h3>
-                    <p>Mantener una buena salud es fundamental para disfrutar de una vida plena y productiva.</p>
+                    <p>Mantener una buena salud es fundamental para disfrutar de una vida plena y productiva. Cuidar tu cuerpo y mente te permite tener más energía, mejor estado de ánimo y prevenir enfermedades.</p>
                     
-                    <!-- Elemento de imagen con botón interactivo -->
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
                              alt="Persona meditando en la naturaleza" class="health-image">
                         <button class="toggle-btn" onclick="toggleDescription()">💡 Ver beneficio</button>
                         <div id="health-description" class="description hidden">
-                            <p><strong>Beneficio:</strong> La meditación regular reduce el estrés, mejora la concentración y promueve el bienestar emocional. Solo 10 minutos al día pueden hacer una gran diferencia.</p>
+                            <p><strong>Beneficio:</strong> La meditación regular reduce el estrés, mejora la concentración y promueve el bienestar emocional. Solo 10 minutos al día pueden hacer una gran diferencia en tu salud mental.</p>
                         </div>
                     </div>
                 </div>
@@ -304,11 +289,10 @@
             <div class="content-grid">
                 <div class="info-card">
                     <h3>Alimentación Balanceada</h3>
-                    <p>Descubre los principios básicos de una nutrición adecuada para tu cuerpo.</p>
+                    <p>Descubre los principios básicos de una nutrición adecuada para tu cuerpo. Una dieta equilibrada proporciona los nutrientes necesarios para el buen funcionamiento del organismo.</p>
                     
-                    <!-- Elemento de imagen con botón interactivo -->
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
                              alt="Alimentos saludables variados" class="health-image">
                         <button class="toggle-btn" onclick="toggleNutritionTip()">🥗 Consejo nutricional</button>
                         <div id="nutrition-tip" class="description hidden">
@@ -325,15 +309,14 @@
             <div class="content-grid">
                 <div class="info-card">
                     <h3>Actividad Física Regular</h3>
-                    <p>El ejercicio es clave para mantener un cuerpo sano y una mente clara.</p>
+                    <p>El ejercicio es clave para mantener un cuerpo sano y una mente clara. La actividad física regular fortalece el corazón, mejora la circulación y libera endorfinas.</p>
                     
-                    <!-- Elemento de imagen con botón interactivo -->
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
                              alt="Persona haciendo ejercicio al aire libre" class="health-image">
                         <button class="toggle-btn" onclick="toggleExerciseTip()">💪 Tip de ejercicio</button>
                         <div id="exercise-tip" class="description hidden">
-                            <p><strong>Recomendación:</strong> Realiza al menos 150 minutos de actividad moderada o 75 minutos de actividad intensa por semana. ¡Caminar cuenta!</p>
+                            <p><strong>Recomendación:</strong> Realiza al menos 150 minutos de actividad moderada o 75 minutos de actividad intensa por semana. ¡Caminar, nadar o andar en bicicleta son excelentes opciones!</p>
                         </div>
                     </div>
                 </div>
@@ -346,15 +329,14 @@
             <div class="content-grid">
                 <div class="info-card">
                     <h3>Cuidado Emocional</h3>
-                    <p>Tu bienestar mental es igual de importante que tu salud física.</p>
+                    <p>Tu bienestar mental es igual de importante que tu salud física. Cuidar de tu salud emocional te ayuda a manejar el estrés y mantener relaciones saludables.</p>
                     
-                    <!-- Elemento de imagen con botón interactivo -->
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
                              alt="Persona practicando mindfulness" class="health-image">
                         <button class="toggle-btn" onclick="toggleMentalTip()">🧠 Técnica mental</button>
                         <div id="mental-tip" class="description hidden">
-                            <p><strong>Técnica:</strong> Practica la respiración 4-7-8: inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad.</p>
+                            <p><strong>Técnica:</strong> Practica la respiración 4-7-8: inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad y promover la relajación.</p>
                         </div>
                     </div>
                 </div>
@@ -371,103 +353,65 @@
 
     <script>
         // Navegación SPA - Cambio de secciones sin recargar la página
-        class SPANavigation {
-            constructor() {
-                this.currentSection = 'inicio';
-                this.init();
-            }
-
-            init() {
-                this.setupNavigation();
-                this.showSection(this.currentSection);
-            }
-
-            setupNavigation() {
-                // Configurar event listeners para los enlaces de navegación
-                const navLinks = document.querySelectorAll('.nav-link');
-                
-                navLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        
-                        const targetSection = link.getAttribute('data-section');
-                        this.navigateTo(targetSection);
-                    });
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+            
+            // Función para cambiar de sección
+            function showSection(sectionId) {
+                // Ocultar todas las secciones
+                sections.forEach(section => {
+                    section.classList.remove('active');
                 });
-            }
-
-            navigateTo(section) {
-                // Ocultar sección actual
-                this.hideCurrentSection();
-
-                // Mostrar nueva sección
-                this.showSection(section);
-
-                // Actualizar navegación activa
-                this.updateActiveNav(section);
-
-                this.currentSection = section;
-            }
-
-            hideCurrentSection() {
-                const currentSection = document.querySelector('.content-section.active');
-                if (currentSection) {
-                    currentSection.classList.remove('active');
-                }
-            }
-
-            showSection(section) {
-                const targetSection = document.getElementById(section);
+                
+                // Mostrar la sección seleccionada
+                const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
                     targetSection.classList.add('active');
                 }
-            }
-
-            updateActiveNav(section) {
-                // Remover clase active de todos los enlaces
-                const navLinks = document.querySelectorAll('.nav-link');
+                
+                // Actualizar navegación activa
                 navLinks.forEach(link => {
                     link.classList.remove('active');
+                    if (link.getAttribute('data-section') === sectionId) {
+                        link.classList.add('active');
+                    }
                 });
-
-                // Agregar clase active al enlace correspondiente
-                const activeLink = document.querySelector(`[data-section="${section}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
             }
-        }
+            
+            // Configurar event listeners para navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // Mostrar sección inicial
+            showSection('inicio');
+        });
 
         // Funciones para mostrar/ocultar elementos (Hipermedios)
         function toggleDescription() {
-            const description = document.getElementById('health-description');
-            description.classList.toggle('hidden');
+            const element = document.getElementById('health-description');
+            element.classList.toggle('hidden');
         }
 
         function toggleNutritionTip() {
-            const tip = document.getElementById('nutrition-tip');
-            tip.classList.toggle('hidden');
+            const element = document.getElementById('nutrition-tip');
+            element.classList.toggle('hidden');
         }
 
         function toggleExerciseTip() {
-            const tip = document.getElementById('exercise-tip');
-            tip.classList.toggle('hidden');
+            const element = document.getElementById('exercise-tip');
+            element.classList.toggle('hidden');
         }
 
         function toggleMentalTip() {
-            const tip = document.getElementById('mental-tip');
-            tip.classList.toggle('hidden');
+            const element = document.getElementById('mental-tip');
+            element.classList.toggle('hidden');
         }
-
-        // Inicializar la aplicación cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            new SPANavigation();
-        });
-
-        // Manejo de errores básico
-        window.addEventListener('error', (e) => {
-            console.error('Error en la aplicación:', e.error);
-        });
     </script>
 </body>
 </html>
