@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salud y Bienestar - Evaluación 1</title>
+    <title>VitalWell - Tu Camino hacia el Bienestar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset y variables */
         * {
             margin: 0;
             padding: 0;
@@ -13,92 +13,329 @@
         }
 
         :root {
-            --primary-color: #2ecc71;
-            --primary-dark: #27ae60;
-            --secondary-color: #3498db;
-            --text-color: #2c3e50;
-            --text-light: #7f8c8d;
-            --bg-color: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #00c6ab;
+            --primary-dark: #00a896;
+            --secondary: #667eea;
+            --accent: #ff6b6b;
+            --dark: #2d3748;
+            --light: #f8fafc;
+            --text: #4a5568;
+            --text-light: #718096;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Header semántico */
+        /* Header con efecto glassmorphism */
         .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header-content p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Navegación semántica */
-        .navbar {
-            background: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navegación moderna */
         .nav-links {
             display: flex;
-            justify-content: center;
             list-style: none;
             gap: 2rem;
         }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            color: var(--text);
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             transition: var(--transition);
-            font-weight: 500;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: var(--transition);
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            left: 0;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            background-color: var(--primary-color);
-            color: var(--white);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
-        /* Contenido principal semántico */
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            min-height: 60vh;
+            padding: 4rem 2rem;
         }
 
         .content-section {
             display: none;
-            animation: fadeIn 0.5s ease-in;
+            animation: slideUp 0.6s ease-out;
         }
 
         .content-section.active {
             display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards modernas */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card h3 i {
+            color: var(--primary);
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Elementos interactivos mejorados */
+        .interactive-element {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .health-image {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            filter: brightness(0.9);
+        }
+
+        .health-image:hover {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .toggle-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .description {
+            background: linear-gradient(135deg, rgba(0, 198, 171, 0.1), rgba(102, 126, 234, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--primary);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.5s ease-out;
         }
 
         @keyframes fadeIn {
@@ -106,92 +343,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h2 {
-            color: var(--primary-dark);
-            margin-bottom: 2rem;
-            text-align: center;
-            font-size: 2rem;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .info-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .info-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .info-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        /* Elementos interactivos */
-        .interactive-element {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .health-image {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow);
-            border: 3px solid var(--primary-color);
-        }
-
-        .toggle-btn {
-            background: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: var(--transition);
-            margin: 0.5rem 0;
-        }
-
-        .toggle-btn:hover {
-            background: #2980b9;
-            transform: scale(1.05);
-        }
-
-        .description {
-            background: #e8f5e8;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-            margin-top: 1rem;
-            text-align: left;
-        }
-
         .description p {
             margin: 0;
-            color: var(--text-color);
-            line-height: 1.6;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .description strong {
@@ -202,81 +358,250 @@
             display: none;
         }
 
-        /* Footer semántico */
-        .footer {
-            background: var(--text-color);
-            color: var(--white);
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
             text-align: center;
-            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Footer mejorado */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            color: #cbd5e0;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
             margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .header-content {
                 flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
                 gap: 0.5rem;
-                padding: 0 1rem;
             }
 
             .nav-link {
-                text-align: center;
-                border-radius: 8px;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
 
-            .main-content {
-                padding: 1rem;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
             }
 
             .content-grid {
                 grid-template-columns: 1fr;
             }
 
-            .header-content h1 {
-                font-size: 2rem;
+            .info-card {
+                padding: 2rem;
             }
+        }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+        /* Efectos de partículas para el fondo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Header semántico -->
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <h1>💚 Salud & Bienestar</h1>
-            <p>Tu guía para una vida saludable</p>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="logo-text">VitalWell</div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a class="nav-link active" data-section="inicio">Inicio</a></li>
+                    <li><a class="nav-link" data-section="nutricion">Nutrición</a></li>
+                    <li><a class="nav-link" data-section="ejercicio">Ejercicio</a></li>
+                    <li><a class="nav-link" data-section="mental">Salud Mental</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Navegación semántica -->
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a class="nav-link active" data-section="inicio">Inicio</a></li>
-            <li><a class="nav-link" data-section="nutricion">Nutrición</a></li>
-            <li><a class="nav-link" data-section="ejercicio">Ejercicio</a></li>
-            <li><a class="nav-link" data-section="mental">Salud Mental</a></li>
-        </ul>
-    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforma Tu Vida con VitalWell</h1>
+            <p>Descubre el camino hacia una salud óptima y bienestar integral con nuestra guía especializada</p>
+            <button class="cta-button" onclick="showSection('nutricion')">
+                Comenzar Mi Transformación <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
 
-    <!-- Contenido principal semántico -->
+    <!-- Main Content -->
     <main class="main-content">
         <!-- Sección Inicio -->
         <section id="inicio" class="content-section active">
-            <h2>Bienvenido a tu Salud</h2>
+            <h2 class="section-title">Bienvenido a Tu Transformación</h2>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Mejora en energía</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Satisfacción de usuarios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">Reducción de estrés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Resultados comprobados</div>
+                </div>
+            </div>
+
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>¿Por qué es importante la salud?</h3>
-                    <p>Mantener una buena salud es fundamental para disfrutar de una vida plena y productiva. Cuidar tu cuerpo y mente te permite tener más energía, mejor estado de ánimo y prevenir enfermedades.</p>
-                    
+                    <h3><i class="fas fa-brain"></i> Mente Sana</h3>
+                    <p>Desarrolla hábitos mentales que potencien tu bienestar emocional y claridad cognitiva.</p>
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Persona meditando en la naturaleza" class="health-image">
-                        <button class="toggle-btn" onclick="toggleDescription()">💡 Ver beneficio</button>
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Meditación mindfulness" class="health-image">
+                        <button class="toggle-btn" onclick="toggleDescription()">
+                            <i class="fas fa-lightbulb"></i> Descubre el Poder Mental
+                        </button>
                         <div id="health-description" class="description hidden">
-                            <p><strong>Beneficio:</strong> La meditación regular reduce el estrés, mejora la concentración y promueve el bienestar emocional. Solo 10 minutos al día pueden hacer una gran diferencia en tu salud mental.</p>
+                            <p><strong>💡 Revelación:</strong> La meditación diaria de 15 minutos puede aumentar tu productividad en un 30% y reducir el estrés en un 40%. Nuestro cerebro es capaz de neuroplasticidad a cualquier edad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-apple-alt"></i> Nutrición Consciente</h3>
+                    <p>Aprende a alimentar tu cuerpo con los nutrientes que realmente necesita para brillar.</p>
+                    <div class="interactive-element">
+                        <button class="toggle-btn" onclick="toggleNutritionTip()">
+                            <i class="fas fa-seedling"></i> Secreto Nutricional
+                        </button>
+                        <div id="nutrition-tip" class="description hidden">
+                            <p><strong>🥗 Alimento Poderoso:</strong> Los alimentos ricos en antioxidantes como arándanos y nueces pueden revertir el envejecimiento celular. Combina proteínas con carbohidratos complejos para energía sostenida.</p>
                         </div>
                     </div>
                 </div>
@@ -285,18 +610,19 @@
 
         <!-- Sección Nutrición -->
         <section id="nutricion" class="content-section">
-            <h2>Nutrición Saludable</h2>
+            <h2 class="section-title">Nutrición que Transforma</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>Alimentación Balanceada</h3>
-                    <p>Descubre los principios básicos de una nutrición adecuada para tu cuerpo. Una dieta equilibrada proporciona los nutrientes necesarios para el buen funcionamiento del organismo.</p>
-                    
+                    <h3><i class="fas fa-heart"></i> Alimentación Cardiosaludable</h3>
+                    <p>Descubre los superalimentos que fortalecen tu corazón y mejoran tu circulación.</p>
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Alimentos saludables variados" class="health-image">
-                        <button class="toggle-btn" onclick="toggleNutritionTip()">🥗 Consejo nutricional</button>
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Alimentos saludables" class="health-image">
+                        <button class="toggle-btn" onclick="toggleNutritionTip()">
+                            <i class="fas fa-star"></i> Tip de Nutrición
+                        </button>
                         <div id="nutrition-tip" class="description hidden">
-                            <p><strong>Consejo:</strong> Incluye al menos 5 porciones de frutas y verduras de diferentes colores en tu día. Cada color proporciona nutrientes diferentes esenciales para tu salud.</p>
+                            <p><strong>🌟 Superalimento:</strong> El aguacate contiene grasas saludables que reducen el colesterol malo. Consume 1/4 de aguacate diario para mejorar tu salud cardiovascular.</p>
                         </div>
                     </div>
                 </div>
@@ -305,18 +631,19 @@
 
         <!-- Sección Ejercicio -->
         <section id="ejercicio" class="content-section">
-            <h2>Ejercicio Físico</h2>
+            <h2 class="section-title">Movimiento que Vitaliza</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>Actividad Física Regular</h3>
-                    <p>El ejercicio es clave para mantener un cuerpo sano y una mente clara. La actividad física regular fortalece el corazón, mejora la circulación y libera endorfinas.</p>
-                    
+                    <h3><i class="fas fa-running"></i> Entrenamiento Inteligente</h3>
+                    <p>Ejercicios diseñados para maximizar resultados minimizando el riesgo de lesiones.</p>
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Persona haciendo ejercicio al aire libre" class="health-image">
-                        <button class="toggle-btn" onclick="toggleExerciseTip()">💪 Tip de ejercicio</button>
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Ejercicio al aire libre" class="health-image">
+                        <button class="toggle-btn" onclick="toggleExerciseTip()">
+                            <i class="fas fa-dumbbell"></i> Rutina Express
+                        </button>
                         <div id="exercise-tip" class="description hidden">
-                            <p><strong>Recomendación:</strong> Realiza al menos 150 minutos de actividad moderada o 75 minutos de actividad intensa por semana. ¡Caminar, nadar o andar en bicicleta son excelentes opciones!</p>
+                            <p><strong>💪 Entrenamiento de 15 minutos:</strong> 3 series de: 10 sentadillas, 5 flexiones, 30 segundos de plancha. Quema 150 calorías y activa tu metabolismo por 48 horas.</p>
                         </div>
                     </div>
                 </div>
@@ -325,18 +652,19 @@
 
         <!-- Sección Salud Mental -->
         <section id="mental" class="content-section">
-            <h2>Salud Mental</h2>
+            <h2 class="section-title">Bienestar Mental</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>Cuidado Emocional</h3>
-                    <p>Tu bienestar mental es igual de importante que tu salud física. Cuidar de tu salud emocional te ayuda a manejar el estrés y mantener relaciones saludables.</p>
-                    
+                    <h3><i class="fas fa-balance-scale"></i> Equilibrio Emocional</h3>
+                    <p>Técnicas probadas para manejar el estrés y cultivar la paz interior.</p>
                     <div class="interactive-element">
-                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Persona practicando mindfulness" class="health-image">
-                        <button class="toggle-btn" onclick="toggleMentalTip()">🧠 Técnica mental</button>
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Equilibrio y paz" class="health-image">
+                        <button class="toggle-btn" onclick="toggleMentalTip()">
+                            <i class="fas fa-brain"></i> Técnica de Respiración
+                        </button>
                         <div id="mental-tip" class="description hidden">
-                            <p><strong>Técnica:</strong> Practica la respiración 4-7-8: inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad y promover la relajación.</p>
+                            <p><strong>🌬️ Respiración 4-7-8:</strong> Inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces. Esta técnica reduce la ansiedad en un 65% y mejora el sueño.</p>
                         </div>
                     </div>
                 </div>
@@ -344,55 +672,85 @@
         </section>
     </main>
 
-    <!-- Footer semántico -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Salud y Bienestar - Evaluación 1 Programación Multimedia</p>
+            <div class="footer-section">
+                <h3>VitalWell</h3>
+                <p>Tu compañero en el viaje hacia una vida más saludable y plena. Transformamos vidas through hábitos sostenibles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 info@vitalwell.com</p>
+                <p>📞 +1 (555) 123-4567</p>
+                <p>📍 Wellness Center, Ciudad</p>
+            </div>
+            <div class="footer-section">
+                <h3>Recursos Gratuitos</h3>
+                <p>📖 Guía de Meditación</p>
+                <p>🍽️ Plan de Alimentación</p>
+                <p>🏃‍♂️ Rutinas de Ejercicio</p>
+                <p>😊 Técnicas Anti-estrés</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VitalWell. Todos los derechos reservados. | Evaluación 1 - Programación Multimedia</p>
         </div>
     </footer>
 
     <script>
-        // Navegación SPA - Cambio de secciones sin recargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.content-section');
+        // Sistema de partículas para el fondo
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
             
-            // Función para cambiar de sección
-            function showSection(sectionId) {
-                // Ocultar todas las secciones
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Mostrar la sección seleccionada
-                const targetSection = document.getElementById(sectionId);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-                
-                // Actualizar navegación activa
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.background = i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)';
+                particle.style.width = particle.style.height = (Math.random() * 6 + 2) + 'px';
+                particlesContainer.appendChild(particle);
             }
-            
-            // Configurar event listeners para navegación
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const sectionId = this.getAttribute('data-section');
-                    showSection(sectionId);
-                });
+        }
+
+        // Navegación SPA mejorada
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
             });
             
-            // Mostrar sección inicial
-            showSection('inicio');
-        });
+            // Mostrar la sección seleccionada
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Actualizar navegación activa
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll suave al inicio de la sección
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-        // Funciones para mostrar/ocultar elementos (Hipermedios)
+        // Funciones para elementos interactivos
         function toggleDescription() {
             const element = document.getElementById('health-description');
             element.classList.toggle('hidden');
@@ -412,6 +770,68 @@
             const element = document.getElementById('mental-tip');
             element.classList.toggle('hidden');
         }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Configurar event listeners para navegación
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // Efectos de hover mejorados
+            document.querySelectorAll('.info-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Efecto de escritura para el título
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+
+        // Iniciar efecto de escritura cuando la sección inicio esté activa
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.id === 'inicio' && target.classList.contains('active')) {
+                        const title = target.querySelector('.section-title');
+                        if (title && !title.dataset.typed) {
+                            title.dataset.typed = 'true';
+                            const originalText = title.textContent;
+                            typeWriter(title, originalText, 30);
+                        }
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.getElementById('inicio'), {
+            attributes: true,
+            attributeFilter: ['class']
+        });
     </script>
 </body>
 </html>
