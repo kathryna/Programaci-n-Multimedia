@@ -600,9 +600,6 @@
     </style>
 </head>
 <body>
-    <!-- Partículas de fondo -->
-    <div class="particles" id="particles"></div>
-
     <!-- Header -->
     <header class="header">
         <div class="header-content">
@@ -618,7 +615,6 @@
                     <li><a class="nav-link" data-section="nutricion">Nutrición</a></li>
                     <li><a class="nav-link" data-section="ejercicio">Ejercicio</a></li>
                     <li><a class="nav-link" data-section="mental">Salud Mental</a></li>
-                    <li><a class="nav-link" data-section="sueño">Sueño</a></li>
                 </ul>
             </nav>
         </div>
@@ -628,7 +624,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Transforma Tu Vida con VitalWell</h1>
-            <p>Descubre el camino hacia una salud óptima y bienestar integral con nuestra guía especializada basada en ciencia y experiencia</p>
+            <p>Descubre el camino hacia una salud óptima y bienestar integral con nuestra guía especializada</p>
             <button class="cta-button" onclick="showSection('nutricion')">
                 Comenzar Mi Transformación <i class="fas fa-arrow-right"></i>
             </button>
@@ -644,7 +640,7 @@
             <div class="stats">
                 <div class="stat-card">
                     <div class="stat-number">85%</div>
-                    <div class="stat-label">Mejora en energía vital</div>
+                    <div class="stat-label">Mejora en energía</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">92%</div>
@@ -663,61 +659,31 @@
             <div class="content-grid">
                 <div class="info-card">
                     <div class="card-badge">Nuevo</div>
-                    <h3><i class="fas fa-brain"></i> Mente Sana en Cuerpo Sano</h3>
-                    <p>La conexión mente-cuerpo es fundamental para el bienestar integral. Descubre cómo tu estado mental afecta directamente tu salud física.</p>
+                    <h3><i class="fas fa-brain"></i> Mente Sana</h3>
+                    <p>Desarrolla hábitos mentales que potencien tu bienestar emocional y claridad cognitiva.</p>
                     
-                    <ul class="benefits-list">
-                        <li>Reduce el cortisol (hormona del estrés) en un 25%</li>
-                        <li>Mejora la función inmunológica</li>
-                        <li>Aumenta la longevidad y calidad de vida</li>
-                        <li>Fortalece la resiliencia emocional</li>
-                    </ul>
-
                     <div class="interactive-element">
                         <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                              alt="Meditación mindfulness" class="health-image">
-                        <button class="toggle-btn" onclick="toggleContent('inicio-desc')">
+                        <button class="toggle-btn" data-target="inicio-desc">
                             <i class="fas fa-lightbulb"></i> Descubre el Poder Mental
                         </button>
                         <div id="inicio-desc" class="description hidden">
-                            <p><strong>💡 Revelación Científica:</strong> Estudios de la Universidad de Harvard demuestran que la meditación diaria de 15 minutos puede aumentar tu productividad en un 30% y reducir el estrés en un 40%. La neuroplasticidad nos permite reprogramar nuestro cerebro a cualquier edad.</p>
-                            <div class="tip-box">
-                                <strong>🔄 Técnica de 5 Minutos:</strong> Siéntate cómodamente, cierra los ojos y enfócate en tu respiración. Cuando surjan pensamientos, obsérvalos sin juzgar y regresa suavemente a la respiración.
-                            </div>
+                            <p><strong>💡 Revelación:</strong> La meditación diaria de 15 minutos puede aumentar tu productividad en un 30% y reducir el estrés en un 40%.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <h3><i class="fas fa-apple-alt"></i> Nutrición Consciente</h3>
-                    <p>Los alimentos son tu medicina. Aprende a elegir los nutrientes que tu cuerpo necesita para funcionar óptimamente.</p>
+                    <p>Aprende a alimentar tu cuerpo con los nutrientes que realmente necesita para brillar.</p>
                     
-                    <div class="info-grid">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <h4>Alimentos Verdes</h4>
-                            <p>Espinacas, brócoli y kale son ricos en clorofila y antioxidantes</p>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <h4>Superfoods</h4>
-                            <p>Chía, quinoa y bayas de goji para energía sostenida</p>
-                        </div>
-                    </div>
-
                     <div class="interactive-element">
-                        <button class="toggle-btn" onclick="toggleContent('inicio-nutri')">
-                            <i class="fas fa-seedling"></i> Secreto Nutricional Revelado
+                        <button class="toggle-btn" data-target="inicio-nutri">
+                            <i class="fas fa-seedling"></i> Secreto Nutricional
                         </button>
                         <div id="inicio-nutri" class="description hidden">
-                            <p><strong>🥗 Combinación Perfecta:</strong> Los alimentos ricos en antioxidantes como arándanos, nueces y chocolate negro (70%+) pueden revertir el daño celular. Combina proteínas magras con carbohidratos complejos para energía sostenida durante todo el día.</p>
-                            <div class="warning-box">
-                                <strong>⚠️ Alerta:</strong> Evita los alimentos ultraprocesados que contienen jarabe de maíz de alta fructosa, ya que está vinculado con resistencia a la insulina y obesidad.
-                            </div>
+                            <p><strong>🥗 Alimento Poderoso:</strong> Los alimentos ricos en antioxidantes como arándanos y nueces pueden revertir el envejecimiento celular.</p>
                         </div>
                     </div>
                 </div>
@@ -727,60 +693,33 @@
         <!-- Sección Nutrición -->
         <section id="nutricion" class="content-section">
             <h2 class="section-title">Nutrición que Transforma</h2>
-            
             <div class="content-grid">
                 <div class="info-card">
                     <h3><i class="fas fa-heart"></i> Alimentación Cardiosaludable</h3>
-                    <p>Protege tu corazón con alimentos que reducen el colesterol LDL y fortalecen el sistema cardiovascular.</p>
+                    <p>Descubre los superalimentos que fortalecen tu corazón y mejoran tu circulación.</p>
                     
-                    <ul class="benefits-list">
-                        <li>Aguacate: Grasas monoinsaturadas que reducen colesterol malo</li>
-                        <li>Salmón: Omega-3 que disminuye triglicéridos</li>
-                        <li>Avena: Beta-glucanos que absorben colesterol</li>
-                        <li>Nueces: Ácido alfa-linolénico antiinflamatorio</li>
-                        <li>Té verde: Catequinas que mejoran la función arterial</li>
-                    </ul>
-
                     <div class="interactive-element">
                         <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                              alt="Alimentos saludables" class="health-image">
-                        <button class="toggle-btn" onclick="toggleContent('nutri-plan')">
-                            <i class="fas fa-star"></i> Plan de Alimentación Semanal
+                        <button class="toggle-btn" data-target="nutri-plan">
+                            <i class="fas fa-star"></i> Plan de Alimentación
                         </button>
                         <div id="nutri-plan" class="description hidden">
-                            <p><strong>📅 Menú Semanal Saludable:</strong></p>
-                            <p><strong>Lunes:</strong> Desayuno: Avena con frutos rojos | Almuerzo: Ensalada de quinoa con aguacate | Cena: Salmón al horno con espárragos</p>
-                            <p><strong>Martes:</strong> Desayuno: Smoothie verde | Almuerzo: Wrap de pollo y vegetales | Cena: Curry de lentejas con arroz integral</p>
-                            <p><strong>Miércoles:</strong> Desayuno: Yogurt griego con nueces | Almuerzo: Sopa de verduras | Cena: Pescado a la plancha con brócoli</p>
+                            <p><strong>📅 Menú Semanal Saludable:</strong> Incluye frutas, verduras, proteínas magras y grasas saludables en cada comida.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <h3><i class="fas fa-fire"></i> Metabolismo Acelerado</h3>
-                    <p>Activa tu metabolismo con alimentos termogénicos y hábitos que queman calorías incluso en reposo.</p>
+                    <p>Activa tu metabolismo con alimentos termogénicos y hábitos que queman calorías.</p>
                     
-                    <div class="tip-box">
-                        <strong>🔥 Alimentos Termogénicos:</strong> Jengibre, canela, chiles, té verde, café y proteínas magras aumentan temporalmente tu tasa metabólica hasta en un 15%.
-                    </div>
-
-                    <ul class="benefits-list">
-                        <li>Desayuna dentro de la primera hora después de despertar</li>
-                        <li>Bebe 2 litros de agua fría al día (quema 100 calorías extras)</li>
-                        <li>Incluye proteína en cada comida</li>
-                        <li>Consume pequeñas comidas cada 3-4 horas</li>
-                    </ul>
-
                     <div class="interactive-element">
-                        <button class="toggle-btn" onclick="toggleContent('nutri-meta')">
+                        <button class="toggle-btn" data-target="nutri-meta">
                             <i class="fas fa-bolt"></i> Acelera Tu Metabolismo
                         </button>
                         <div id="nutri-meta" class="description hidden">
-                            <p><strong>⚡ Estrategias Comprobadas:</strong></p>
-                            <p>• Entrenamiento por intervalos de alta intensidad (HIIT)</p>
-                            <p>• Consumo de té verde matcha (aumenta termogénesis)</p>
-                            <p>• Dormir 7-8 horas de calidad cada noche</p>
-                            <p>• Manejo del estrés (el cortisol ralentiza el metabolismo)</p>
+                            <p><strong>⚡ Estrategias Comprobadas:</strong> Ejercicio, hidratación y alimentos termogénicos.</p>
                         </div>
                     </div>
                 </div>
@@ -790,73 +729,33 @@
         <!-- Sección Ejercicio -->
         <section id="ejercicio" class="content-section">
             <h2 class="section-title">Movimiento que Vitaliza</h2>
-            
             <div class="content-grid">
                 <div class="info-card">
-                    <h3><i class="fas fa-running"></i> Entrenamiento Funcional</h3>
-                    <p>Ejercicios que imitan movimientos de la vida diaria, mejorando tu fuerza, equilibrio y coordinación.</p>
+                    <h3><i class="fas fa-running"></i> Entrenamiento Inteligente</h3>
+                    <p>Ejercicios diseñados para maximizar resultados minimizando el riesgo de lesiones.</p>
                     
-                    <ul class="benefits-list">
-                        <li>Sentadillas: Fortalecen piernas y core</li>
-                        <li>Flexiones: Desarrollan torso y brazos</li>
-                        <li>Planchas: Mejoran estabilidad central</li>
-                        <li>Zancadas: Trabajan equilibrio unilateral</li>
-                        <li>Puentes de glúteos: Activación posterior</li>
-                    </ul>
-
                     <div class="interactive-element">
                         <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                              alt="Ejercicio al aire libre" class="health-image">
-                        <button class="toggle-btn" onclick="toggleContent('ejercicio-rutina')">
-                            <i class="fas fa-dumbbell"></i> Rutina Express de 15 Minutos
+                        <button class="toggle-btn" data-target="ejercicio-rutina">
+                            <i class="fas fa-dumbbell"></i> Rutina Express
                         </button>
                         <div id="ejercicio-rutina" class="description hidden">
-                            <p><strong>💪 Circuito de Alta Intensidad:</strong> Realiza 3 rondas del siguiente circuito con 1 minuto de descanso entre rondas:</p>
-                            <p>• 30 segundos de sentadillas (descanso 15s)</p>
-                            <p>• 30 segundos de flexiones (descanso 15s)</p>
-                            <p>• 30 segundos de plancha (descanso 15s)</p>
-                            <p>• 30 segundos de jumping jacks (descanso 15s)</p>
-                            <p>• 30 segundos de zancadas alternadas (descanso 15s)</p>
-                            <div class="tip-box">
-                                <strong>🎯 Resultado:</strong> Quema aproximadamente 150 calorías y activa tu metabolismo por 48 horas mediante el efecto EPOC (exceso de consumo de oxígeno post-ejercicio).
-                            </div>
+                            <p><strong>💪 Circuito de 15 Minutos:</strong> Quema calorías y activa tu metabolismo.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="info-card">
-                    <h3><i class="fas fa-walking"></i> Movimiento Diario Esencial</h3>
-                    <p>Incorporar actividad física en tu rutina diaria es más importante que sesiones intensas esporádicas.</p>
+                    <h3><i class="fas fa-walking"></i> Movimiento Diario</h3>
+                    <p>Incorporar actividad física en tu rutina diaria es esencial para la salud.</p>
                     
-                    <div class="info-grid">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-shoe-prints"></i>
-                            </div>
-                            <h4>10,000 Pasos</h4>
-                            <p>Meta diaria para mantener salud cardiovascular</p>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-stopwatch"></i>
-                            </div>
-                            <h4>Regla 30-30</h4>
-                            <p>30 minutos de pie por cada 30 sentado</p>
-                        </div>
-                    </div>
-
-                    <div class="warning-box">
-                        <strong>📊 Dato Alarmante:</strong> Pasar más de 8 horas sentado al día aumenta el riesgo de enfermedades cardíacas en un 147%, incluso si haces ejercicio regularmente.
-                    </div>
-
                     <div class="interactive-element">
-                        <button class="toggle-btn" onclick="toggleContent('ejercicio-movimiento')">
+                        <button class="toggle-btn" data-target="ejercicio-movimiento">
                             <i class="fas fa-heartbeat"></i> Beneficios del Movimiento
                         </button>
                         <div id="ejercicio-movimiento" class="description hidden">
-                            <p><strong>❤️ Salud Cardiovascular:</strong> El movimiento regular mejora la circulación, reduce la presión arterial y fortalece el corazón.</p>
-                            <p><strong>🧠 Función Cerebral:</strong> Aumenta el flujo sanguíneo al cerebro, mejorando la memoria y concentración.</p>
-                            <p><strong>💪 Salud Ósea:</strong> Previene la osteoporosis y mantiene la densidad mineral ósea.</p>
+                            <p><strong>❤️ Salud Cardiovascular:</strong> El movimiento regular mejora la circulación y fortalece el corazón.</p>
                         </div>
                     </div>
                 </div>
@@ -865,52 +764,151 @@
 
         <!-- Sección Salud Mental -->
         <section id="mental" class="content-section">
-            <h2 class="section-title">Bienestar Mental Integral</h2>
-            
+            <h2 class="section-title">Bienestar Mental</h2>
             <div class="content-grid">
                 <div class="info-card">
                     <h3><i class="fas fa-balance-scale"></i> Gestión del Estrés</h3>
-                    <p>Aprende técnicas científicamente probadas para manejar el estrés y cultivar la resiliencia emocional.</p>
+                    <p>Técnicas probadas para manejar el estrés y cultivar la paz interior.</p>
                     
-                    <ul class="benefits-list">
-                        <li>Respiración diafragmática: Activa sistema parasimpático</li>
-                        <li>Meditación mindfulness: Reduce actividad amígdala cerebral</li>
-                        <li>Ejercicio regular: Libera endorfinas y reduce cortisol</li>
-                        <li>Sueño de calidad: Restaura equilibrio hormonal</li>
-                        <li>Conexión social: Libera oxitocina (hormona del apego)</li>
-                    </ul>
-
                     <div class="interactive-element">
                         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                              alt="Equilibrio y paz" class="health-image">
-                        <button class="toggle-btn" onclick="toggleContent('mental-respiracion')">
-                            <i class="fas fa-brain"></i> Técnica de Respiración Anti-ansiedad
+                        <button class="toggle-btn" data-target="mental-respiracion">
+                            <i class="fas fa-brain"></i> Técnica de Respiración
                         </button>
                         <div id="mental-respiracion" class="description hidden">
-                            <p><strong>🌬️ Respiración 4-7-8 del Dr. Weil:</strong> </p>
-                            <p>1. Exhala completamente por la boca</p>
-                            <p>2. Inhala por la nariz contando mentalmente hasta 4</p>
-                            <p>3. Aguanta la respiración contando hasta 7</p>
-                            <p>4. Exhala completamente por la boca contando hasta 8</p>
-                            <p>5. Repite este ciclo 4 veces</p>
-                            <div class="tip-box">
-                                <strong>🔬 Base Científica:</strong> Esta técnica reduce la ansiedad en un 65%, disminuye la presión arterial y mejora la calidad del sueño al activar el sistema nervioso parasimpático.
-                            </div>
+                            <p><strong>🌬️ Respiración 4-7-8:</strong> Técnica efectiva para reducir la ansiedad y mejorar el sueño.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="info-card">
                     <h3><i class="fas fa-smile"></i> Psicología Positiva</h3>
-                    <p>Cultiva emociones positivas que no solo te hacen sentir mejor, sino que mejoran tu salud física.</p>
+                    <p>Cultiva emociones positivas que mejoran tu salud física y mental.</p>
                     
-                    <div class="info-grid">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-gratitude"></i>
-                            </div>
-                            <h4>Gratitud Diaria</h4>
-                            <p>3 cosas por las que estás agradecido cada día</p>
+                    <div class="interactive-element">
+                        <button class="toggle-btn" data-target="mental-positiva">
+                            <i class="fas fa-sun"></i> Cultiva la Positividad
+                        </button>
+                        <div id="mental-positiva" class="description hidden">
+                            <p><strong>💖 Emociones Positivas:</strong> Fortalecen tu sistema inmunológico y mejoran tu calidad de vida.</p>
                         </div>
-                        <div class="feature-box">
-                            <div class="feature
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VitalWell</h3>
+                <p>Tu compañero en el viaje hacia una vida más saludable y plena.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 info@vitalwell.com</p>
+                <p>📞 +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VitalWell. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema de navegación SPA
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la sección seleccionada
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Actualizar navegación activa
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll suave al inicio
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Función única para mostrar/ocultar contenido
+        function toggleContent(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.classList.toggle('hidden');
+            }
+        }
+
+        // Inicialización cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar navegación
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+
+            // Configurar botones toggle
+            document.querySelectorAll('.toggle-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    toggleContent(targetId);
+                });
+            });
+
+            // Efectos hover para tarjetas
+            document.querySelectorAll('.info-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Mostrar sección inicial
+            showSection('inicio');
+        });
+
+        // Crear partículas de fondo
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles';
+            document.body.appendChild(particlesContainer);
+
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.background = i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)';
+                particle.style.width = particle.style.height = (Math.random() * 6 + 2) + 'px';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Inicializar partículas
+        createParticles();
+    </script>
+</body>
+</html>
