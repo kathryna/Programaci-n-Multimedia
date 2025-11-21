@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salud y Bienestar</title>
+    <title>Salud y Bienestar - Evaluación 1</title>
     <style>
-        /* ESTILOS BÁSICOS Y SEGUROS */
         * {
             margin: 0;
             padding: 0;
@@ -13,103 +12,58 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
+            background-color: #f8f9fa;
         }
 
-        /* HEADER */
         .header {
-            background: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2ecc71;
+            z-index: 100;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1rem;
+            justify-content: center;
+            padding: 1rem;
         }
 
         .nav-link {
             text-decoration: none;
             color: #333;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
+            margin: 0 0.5rem;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
 
-        .nav-link:hover,
-        .nav-link.active {
-            background: #2ecc71;
+        .nav-link.active,
+        .nav-link:hover {
+            background-color: #4CAF50;
             color: white;
         }
 
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(135deg, #2ecc71, #3498db);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-button {
-            background: white;
-            color: #2ecc71;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* MAIN CONTENT */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 2rem;
         }
 
         .content-section {
@@ -120,17 +74,11 @@
             display: block;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2ecc71;
-        }
-
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .info-card {
@@ -138,12 +86,11 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .info-card h3 {
-            color: #2ecc71;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .info-card:hover {
+            transform: translateY(-5px);
         }
 
         .health-image {
@@ -154,8 +101,12 @@
             margin: 1rem 0;
         }
 
+        .interactive-element {
+            text-align: center;
+        }
+
         .toggle-btn {
-            background: #3498db;
+            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -163,290 +114,491 @@
             cursor: pointer;
             font-size: 1rem;
             margin: 1rem 0;
-            width: 100%;
-            transition: background 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .toggle-btn:hover {
-            background: #2980b9;
+            background-color: #45a049;
         }
 
         .description {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background-color: #e8f5e8;
+            padding: 1rem;
+            border-radius: 5px;
             margin-top: 1rem;
-            border-left: 4px solid #2ecc71;
+            border-left: 4px solid #4CAF50;
         }
 
         .hidden {
             display: none;
         }
 
-        /* FOOTER */
         .footer {
-            background: #2c3e50;
+            background-color: #333;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
         }
 
-        /* RESPONSIVE */
+        /* Estilos para el formulario de contacto */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-control.error {
+            border-color: #f44336;
+        }
+
+        .form-control.success {
+            border-color: #4CAF50;
+        }
+
+        .feedback {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .feedback.error {
+            color: #f44336;
+            background-color: #ffebee;
+        }
+
+        .feedback.success {
+            color: #4CAF50;
+            background-color: #e8f5e8;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Estilos para la sección de análisis de usabilidad */
+        .usability-analysis {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .usability-analysis h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .usability-analysis p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
             .nav-links {
-                gap: 0.5rem;
+                flex-direction: column;
+                align-items: center;
             }
-
-            .hero h1 {
-                font-size: 2rem;
+            
+            .nav-link {
+                margin: 0.25rem 0;
+                display: block;
+                width: 200px;
+                text-align: center;
             }
-
-            .section-title {
+            
+            .header-content h1 {
                 font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- Header semántico -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">💚 Salud & Bienestar</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a class="nav-link active" onclick="mostrarSeccion('inicio')">Inicio</a></li>
-                    <li><a class="nav-link" onclick="mostrarSeccion('nutricion')">Nutrición</a></li>
-                    <li><a class="nav-link" onclick="mostrarSeccion('ejercicio')">Ejercicio</a></li>
-                    <li><a class="nav-link" onclick="mostrarSeccion('mental')">Salud Mental</a></li>
-                </ul>
-            </nav>
+            <h1>💚 Salud & Bienestar</h1>
+            <p>Tu guía para una vida saludable</p>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Transforma Tu Salud</h1>
-            <p>Descubre el camino hacia el bienestar integral con nuestra guía especializada</p>
-            <button class="cta-button" onclick="mostrarSeccion('nutricion')">
-                Comenzar Ahora →
-            </button>
-        </div>
-    </section>
+    <!-- Navegación semántica -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+            <li><a href="#nutricion" class="nav-link" data-section="nutricion">Nutrición</a></li>
+            <li><a href="#ejercicio" class="nav-link" data-section="ejercicio">Ejercicio</a></li>
+            <li><a href="#mental" class="nav-link" data-section="mental">Salud Mental</a></li>
+            <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+            <li><a href="#usabilidad" class="nav-link" data-section="usabilidad">Análisis</a></li>
+        </ul>
+    </nav>
 
-    <!-- MAIN CONTENT -->
+    <!-- Contenido principal semántico -->
     <main class="main-content">
-        <!-- SECCIÓN INICIO -->
+        <!-- Sección Inicio -->
         <section id="inicio" class="content-section active">
-            <h2 class="section-title">Bienvenido a Tu Transformación</h2>
+            <h2>Bienvenido a tu Salud</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>🧠 Salud Mental</h3>
-                    <p>Aprende técnicas para reducir el estrés y mejorar tu bienestar emocional.</p>
-                    <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?w=400&h=200&fit=crop" 
-                         alt="Meditación" class="health-image">
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc1')">
-                        Ver Técnica de Relajación
-                    </button>
-                    <div id="desc1" class="description hidden">
-                        <p><strong>Técnica de Respiración 4-7-8:</strong> Inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad inmediatamente.</p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h3>🍎 Nutrición Saludable</h3>
-                    <p>Descubre los alimentos que transformarán tu salud y energía.</p>
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc2')">
-                        Consejos Nutricionales
-                    </button>
-                    <div id="desc2" class="description hidden">
-                        <p><strong>Alimentos Esenciales:</strong> Incluye frutas frescas, verduras de hoja verde, proteínas magras y grasas saludables en tu dieta diaria para obtener todos los nutrientes necesarios.</p>
+                    <h3>¿Por qué es importante la salud?</h3>
+                    <p>Mantener una buena salud es fundamental para disfrutar de una vida plena y productiva.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona meditando en la naturaleza" class="health-image">
+                        <button class="toggle-btn" onclick="toggleDescription()">💡 Ver beneficio</button>
+                        <div id="health-description" class="description hidden">
+                            <p><strong>Beneficio:</strong> La meditación regular reduce el estrés, mejora la concentración y promueve el bienestar emocional. Solo 10 minutos al día pueden hacer una gran diferencia.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN NUTRICIÓN -->
+        <!-- Sección Nutrición -->
         <section id="nutricion" class="content-section">
-            <h2 class="section-title">Nutrición que Transforma</h2>
+            <h2>Nutrición Saludable</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>❤️ Alimentación Cardiosaludable</h3>
-                    <p>Protege tu corazón con los alimentos adecuados y mejora tu salud cardiovascular.</p>
-                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=400&h=200&fit=crop" 
-                         alt="Alimentos saludables" class="health-image">
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc3')">
-                        Ver Alimentos Recomendados
-                    </button>
-                    <div id="desc3" class="description hidden">
-                        <p><strong>Superalimentos para el corazón:</strong> Aguacate, nueces, salmón, avena, té verde, bayas y vegetales de hoja verde son excelentes para la salud cardiovascular.</p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h3>🔥 Metabolismo Acelerado</h3>
-                    <p>Activa tu metabolismo naturalmente y quema más calorías en reposo.</p>
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc4')">
-                        Consejos para el Metabolismo
-                    </button>
-                    <div id="desc4" class="description hidden">
-                        <p><strong>Acelera tu metabolismo:</strong> Bebe agua fría, consume proteínas en cada comida, haz ejercicio regularmente y duerme 7-8 horas cada noche.</p>
+                    <h3>Alimentación Balanceada</h3>
+                    <p>Descubre los principios básicos de una nutrición adecuada para tu cuerpo.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Alimentos saludables variados" class="health-image">
+                        <button class="toggle-btn" onclick="toggleNutritionTip()">🥗 Consejo nutricional</button>
+                        <div id="nutrition-tip" class="description hidden">
+                            <p><strong>Consejo:</strong> Incluye al menos 5 porciones de frutas y verduras de diferentes colores en tu día. Cada color proporciona nutrientes diferentes esenciales para tu salud.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN EJERCICIO -->
+        <!-- Sección Ejercicio -->
         <section id="ejercicio" class="content-section">
-            <h2 class="section-title">Ejercicio y Movimiento</h2>
+            <h2>Ejercicio Físico</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>💪 Entrenamiento Funcional</h3>
-                    <p>Ejercicios que mejoran tu fuerza, equilibrio y coordinación para la vida diaria.</p>
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=200&fit=crop" 
-                         alt="Ejercicio" class="health-image">
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc5')">
-                        Ver Rutina Básica
-                    </button>
-                    <div id="desc5" class="description hidden">
-                        <p><strong>Rutina de 15 minutos:</strong> Realiza 3 series de: 10 sentadillas, 5 flexiones, 30 segundos de plancha y 10 zancadas por pierna. Descansa 30 segundos entre series.</p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h3>🚶‍♂️ Movimiento Diario</h3>
-                    <p>La importancia de mantenerse activo durante todo el día para una salud óptima.</p>
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc6')">
-                        Beneficios del Movimiento
-                    </button>
-                    <div id="desc6" class="description hidden">
-                        <p><strong>Camina 10,000 pasos diarios:</strong> Mejora la circulación sanguínea, reduce el estrés, fortalece el corazón, mejora el estado de ánimo y ayuda a mantener un peso saludable.</p>
+                    <h3>Actividad Física Regular</h3>
+                    <p>El ejercicio es clave para mantener un cuerpo sano y una mente clara.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona haciendo ejercicio al aire libre" class="health-image">
+                        <button class="toggle-btn" onclick="toggleExerciseTip()">💪 Tip de ejercicio</button>
+                        <div id="exercise-tip" class="description hidden">
+                            <p><strong>Recomendación:</strong> Realiza al menos 150 minutos de actividad moderada o 75 minutos de actividad intensa por semana. ¡Caminar cuenta!</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN SALUD MENTAL -->
+        <!-- Sección Salud Mental -->
         <section id="mental" class="content-section">
-            <h2 class="section-title">Salud Mental</h2>
+            <h2>Salud Mental</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3>😌 Manejo del Estrés</h3>
-                    <p>Técnicas efectivas para manejar el estrés diario y mejorar tu calidad de vida.</p>
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" 
-                         alt="Mindfulness" class="health-image">
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc7')">
-                        Técnicas Anti-estrés
-                    </button>
-                    <div id="desc7" class="description hidden">
-                        <p><strong>Meditación diaria:</strong> Solo 10 minutos de meditación al día pueden reducir el estrés en un 40%, mejorar la concentración y promover la paz mental.</p>
+                    <h3>Cuidado Emocional</h3>
+                    <p>Tu bienestar mental es igual de importante que tu salud física.</p>
+                    
+                    <!-- Elemento de imagen con botón interactivo -->
+                    <div class="interactive-element">
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bf4a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Persona practicando mindfulness" class="health-image">
+                        <button class="toggle-btn" onclick="toggleMentalTip()">🧠 Técnica mental</button>
+                        <div id="mental-tip" class="description hidden">
+                            <p><strong>Técnica:</strong> Practica la respiración 4-7-8: inhala 4 segundos, mantén 7 segundos, exhala 8 segundos. Repite 4 veces para reducir la ansiedad.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="info-card">
-                    <h3>😊 Bienestar Emocional</h3>
-                    <p>Cultiva emociones positivas y desarrolla una mentalidad resiliente.</p>
-                    <button class="toggle-btn" onclick="mostrarDescripcion('desc8')">
-                        Consejos de Bienestar
-                    </button>
-                    <div id="desc8" class="description hidden">
-                        <p><strong>Practica la gratitud:</strong> Escribe 3 cosas por las que estés agradecido cada día. Esta simple práctica puede aumentar tu felicidad en un 25% y mejorar tu perspectiva de vida.</p>
+        <!-- Sección Contacto (Nueva) -->
+        <section id="contacto" class="content-section">
+            <h2>Contáctanos</h2>
+            <div class="contact-form">
+                <h3>¿Tienes preguntas sobre salud y bienestar?</h3>
+                <p>Completa el formulario y te responderemos a la brevedad.</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre">
+                        <div id="nameFeedback" class="feedback"></div>
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com">
+                        <div id="emailFeedback" class="feedback"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Formato: 123-456-7890">
+                        <div id="phoneFeedback" class="feedback"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" class="form-control" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                        <div id="messageFeedback" class="feedback"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn" disabled>Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección Análisis de Usabilidad (Nueva) -->
+        <section id="usabilidad" class="content-section">
+            <h2>Análisis de Usabilidad</h2>
+            <div class="usability-analysis">
+                <h3>Principios de Cognición y Atención Aplicados</h3>
+                
+                <p><strong>Legibilidad y Contraste:</strong> Se ha implementado un esquema de colores con alto contraste entre el texto y los fondos para garantizar una lectura cómoda. El verde (#4CAF50) utilizado como color principal proporciona una sensación de calma y naturalidad, apropiado para el tema de salud. Los textos oscuros sobre fondos claros y viceversa aseguran una legibilidad óptima según los principios de cognición visual.</p>
+                
+                <p><strong>Jerarquía Visual:</strong> Se ha establecido una clara jerarquía visual mediante el uso de tamaños de fuente diferenciados para títulos, subtítulos y contenido. Los elementos importantes como botones de llamada a la acción utilizan colores contrastantes para captar la atención del usuario de manera natural, guiando su flujo de atención a través de la página de forma intuitiva.</p>
+                
+                <p><strong>Patrones de Reconocimiento:</strong> El diseño sigue convenciones establecidas de interfaces web, como la navegación superior y formularios con validación inmediata. Esto permite a los usuarios reconocer rápidamente los patrones de interacción, reduciendo la carga cognitiva y mejorando la experiencia general.</p>
+                
+                <p><strong>Feedback Inmediato:</strong> El formulario de contacto implementa validación en tiempo real, proporcionando retroalimentación visual inmediata que ayuda a los usuarios a corregir errores rápidamente. Esto simula el reconocimiento de patrones al indicar claramente qué campos requieren atención.</p>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer semántico -->
     <footer class="footer">
-        <p>&copy; 2025 Salud y Bienestar - Todos los derechos reservados</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Salud y Bienestar - Evaluación 1 Programación Multimedia</p>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT SIMPLE Y FUNCIONAL -->
     <script>
-        // FUNCIÓN PARA CAMBIAR SECCIONES - PROBADA
-        function mostrarSeccion(seccionId) {
-            console.log('Intentando mostrar sección:', seccionId);
-            
-            // 1. Ocultar todas las secciones
-            const todasLasSecciones = document.querySelectorAll('.content-section');
-            todasLasSecciones.forEach(seccion => {
-                seccion.classList.remove('active');
-            });
-            
-            // 2. Mostrar la sección seleccionada
-            const seccionObjetivo = document.getElementById(seccionId);
-            if (seccionObjetivo) {
-                seccionObjetivo.classList.add('active');
-                console.log('Sección mostrada:', seccionId);
-            } else {
-                console.error('No se encontró la sección:', seccionId);
-            }
-            
-            // 3. Actualizar navegación activa
-            const todosLosEnlaces = document.querySelectorAll('.nav-link');
-            todosLosEnlaces.forEach(enlace => {
-                enlace.classList.remove('active');
-            });
-            
-            // 4. Marcar el enlace clickeado como activo
-            event.target.classList.add('active');
-            
-            // 5. Scroll suave al inicio
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // FUNCIÓN PARA MOSTRAR/OCULTAR DESCRIPCIONES - PROBADA
-        function mostrarDescripcion(elementoId) {
-            console.log('Botón clickeado para:', elementoId);
-            
-            const elemento = document.getElementById(elementoId);
-            if (elemento) {
-                elemento.classList.toggle('hidden');
-                console.log('Elemento', elementoId, 'ahora está:', elemento.classList.contains('hidden') ? 'oculto' : 'visible');
-            } else {
-                console.error('No se encontró el elemento:', elementoId);
-            }
-        }
-
-        // INICIALIZACIÓN AL CARGAR LA PÁGINA
+        // Navegación entre secciones
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Página cargada - inicializando...');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
             
-            // Verificar que todas las secciones existen
-            const seccionesRequeridas = ['inicio', 'nutricion', 'ejercicio', 'mental'];
-            seccionesRequeridas.forEach(seccion => {
-                if (!document.getElementById(seccion)) {
-                    console.error('Falta la sección:', seccion);
-                }
+            // Navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remover clase active de todos los links y secciones
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Agregar clase active al link clickeado
+                    this.classList.add('active');
+                    
+                    // Mostrar sección correspondiente
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                });
             });
 
-            // Verificar que todos los elementos de descripción existen
-            for (let i = 1; i <= 8; i++) {
-                if (!document.getElementById('desc' + i)) {
-                    console.error('Falta el elemento descripción:', 'desc' + i);
+            // Configurar eventos de validación para el formulario
+            setupFormValidation();
+        });
+
+        // Funciones para mostrar/ocultar descripciones
+        function toggleDescription() {
+            const description = document.getElementById('health-description');
+            description.classList.toggle('hidden');
+        }
+
+        function toggleNutritionTip() {
+            const tip = document.getElementById('nutrition-tip');
+            tip.classList.toggle('hidden');
+        }
+
+        function toggleExerciseTip() {
+            const tip = document.getElementById('exercise-tip');
+            tip.classList.toggle('hidden');
+        }
+
+        function toggleMentalTip() {
+            const tip = document.getElementById('mental-tip');
+            tip.classList.toggle('hidden');
+        }
+
+        // Configuración de validación del formulario
+        function setupFormValidation() {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const messageInput = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Agregar eventos de entrada para validación en tiempo real
+            nameInput.addEventListener('input', function() {
+                validateField(this, validateName);
+            });
+
+            emailInput.addEventListener('input', function() {
+                validateField(this, validateEmail);
+            });
+
+            phoneInput.addEventListener('input', function() {
+                validateField(this, validatePhone);
+            });
+
+            messageInput.addEventListener('input', function() {
+                validateField(this, validateMessage);
+            });
+
+            // Validar formulario completo al enviar
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const isNameValid = validateField(nameInput, validateName);
+                const isEmailValid = validateField(emailInput, validateEmail);
+                const isPhoneValid = validateField(phoneInput, validatePhone);
+                const isMessageValid = validateField(messageInput, validateMessage);
+                
+                if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
+                    alert('¡Formulario enviado correctamente! Gracias por contactarnos.');
+                    this.reset();
+                    submitBtn.disabled = true;
                 }
-            }
+            });
+        }
 
-            // Asegurar que la sección inicio esté activa
-            mostrarSeccion('inicio');
+        // Función modular para validar campos (Punto 3 de la evaluación)
+        function validateField(field, validationFunction) {
+            const value = field.value.trim();
+            const feedbackElement = document.getElementById(field.id + 'Feedback');
+            const submitBtn = document.getElementById('submitBtn');
             
-            console.log('Inicialización completada - TODOS los botones deben funcionar');
-        });
+            const result = validationFunction(value);
+            
+            // Aplicar estilos y mensajes según el resultado
+            if (result.isValid) {
+                field.classList.remove('error');
+                field.classList.add('success');
+                feedbackElement.textContent = result.message || '';
+                feedbackElement.className = 'feedback success';
+            } else {
+                field.classList.remove('success');
+                field.classList.add('error');
+                feedbackElement.textContent = result.message || '';
+                feedbackElement.className = 'feedback error';
+            }
+            
+            // Verificar si todo el formulario es válido
+            checkFormValidity();
+            
+            return result.isValid;
+        }
 
-        // MANEJO DE ERRORES
-        window.addEventListener('error', function(e) {
-            console.error('Error en la página:', e.error);
-        });
+        // Función para verificar la validez de todo el formulario
+        function checkFormValidity() {
+            const nameValid = validateName(document.getElementById('name').value.trim()).isValid;
+            const emailValid = validateEmail(document.getElementById('email').value.trim()).isValid;
+            const phoneValid = validatePhone(document.getElementById('phone').value.trim()).isValid;
+            const messageValid = validateMessage(document.getElementById('message').value.trim()).isValid;
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = !(nameValid && emailValid && phoneValid && messageValid);
+        }
+
+        // Funciones de validación específicas
+        function validateName(name) {
+            if (name === '') {
+                return { isValid: false, message: 'El nombre es obligatorio' };
+            }
+            if (name.length < 2) {
+                return { isValid: false, message: 'El nombre debe tener al menos 2 caracteres' };
+            }
+            return { isValid: true, message: 'Nombre válido' };
+        }
+
+        function validateEmail(email) {
+            if (email === '') {
+                return { isValid: false, message: 'El correo electrónico es obligatorio' };
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return { isValid: false, message: 'Formato de correo electrónico inválido' };
+            }
+            return { isValid: true, message: 'Correo electrónico válido' };
+        }
+
+        function validatePhone(phone) {
+            if (phone === '') {
+                return { isValid: false, message: 'El teléfono es obligatorio' };
+            }
+            const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phoneRegex.test(phone)) {
+                return { isValid: false, message: 'Formato de teléfono inválido. Use: 123-456-7890' };
+            }
+            return { isValid: true, message: 'Teléfono válido' };
+        }
+
+        function validateMessage(message) {
+            if (message === '') {
+                return { isValid: false, message: 'El mensaje es obligatorio' };
+            }
+            if (message.length < 10) {
+                return { isValid: false, message: 'El mensaje debe tener al menos 10 caracteres' };
+            }
+            return { isValid: true, message: 'Mensaje válido' };
+        }
     </script>
 </body>
 </html>
