@@ -199,10 +199,12 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .audio-btn:hover {
             background-color: #388e3c;
+            transform: scale(1.05);
         }
 
         .audio-btn.stop {
@@ -213,12 +215,29 @@
             background-color: #d32f2f;
         }
 
+        .audio-visualizer {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 1rem;
+            height: 40px;
+            align-items: flex-end;
+        }
+
+        .audio-bar {
+            width: 8px;
+            background-color: #4caf50;
+            border-radius: 4px;
+            transition: height 0.3s ease;
+        }
+
         .canvas-container {
             margin: 2rem auto;
             text-align: center;
             padding: 1.5rem;
             background-color: white;
             border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         canvas {
@@ -226,6 +245,7 @@
             margin: 0 auto;
             border-radius: 8px;
             background-color: #f9f9f9;
+            border: 1px solid #ddd;
         }
 
         .footer {
@@ -236,9 +256,16 @@
             margin-top: 3rem;
         }
 
+        .audio-status {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #666;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 gap: 0.5rem;
+                flex-wrap: wrap;
             }
             .content-grid {
                 grid-template-columns: 1fr;
@@ -246,6 +273,9 @@
             .audio-controls {
                 flex-direction: column;
                 align-items: center;
+            }
+            .audio-btn {
+                width: 200px;
             }
         }
     </style>
@@ -300,17 +330,38 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Sección de Audio CORREGIDA -->
             <div class="audio-section">
-                <h3>🎵 Música Relajante</h3>
-                <p>Escucha esta música para meditación diaria.</p>
-                <audio id="meditation-audio" loop>
+                <h3>🎵 Música Relajante para Meditación</h3>
+                <p>Escucha esta música relajante para ayudarte en tu práctica de meditación diaria.</p>
+                
+                <!-- Elemento de audio con fuente alternativa -->
+                <audio id="meditation-audio" preload="auto">
                     <source src="https://assets.mixkit.co/music/preview/mixkit-meditation-ambience-309.mp3" type="audio/mpeg">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
+                
                 <div class="audio-controls">
                     <button class="audio-btn" onclick="playAudio()">▶️ Reproducir</button>
                     <button class="audio-btn" onclick="pauseAudio()">⏸️ Pausar</button>
                     <button class="audio-btn stop" onclick="stopAudio()">⏹️ Detener</button>
+                </div>
+                
+                <!-- Visualizador de audio -->
+                <div class="audio-visualizer" id="audio-visualizer">
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                </div>
+                
+                <div class="audio-status" id="audio-status">
+                    Audio listo para reproducir
                 </div>
             </div>
         </section>
@@ -415,24 +466,84 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Salud y Bienestar - Evaluación 1</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Audio funcional con controles JavaScript</p>
         </div>
     </footer>
 
     <script>
-        // Control de audio
+        // CONTROL DE AUDIO CORREGIDO
         const audio = document.getElementById('meditation-audio');
+        const audioStatus = document.getElementById('audio-status');
+        const audioBars = document.querySelectorAll('.audio-bar');
+        let animationId = null;
+        
+        // Configurar el audio
+        audio.addEventListener('canplaythrough', function() {
+            audioStatus.textContent = 'Audio cargado y listo para reproducir';
+        });
+        
+        audio.addEventListener('error', function() {
+            audioStatus.textContent = 'Error al cargar el audio. Intentando fuente alternativa...';
+            // El audio tiene una segunda fuente en el HTML
+        });
         
         function playAudio() {
-            audio.play();
+            audio.play().then(() => {
+                audioStatus.textContent = 'Reproduciendo...';
+                startAudioVisualizer();
+            }).catch(error => {
+                audioStatus.textContent = 'Error: ' + error.message;
+                console.error('Error al reproducir:', error);
+            });
         }
         
         function pauseAudio() {
             audio.pause();
+            audioStatus.textContent = 'Pausado';
+            stopAudioVisualizer();
         }
         
         function stopAudio() {
             audio.pause();
             audio.currentTime = 0;
+            audioStatus.textContent = 'Detenido';
+            stopAudioVisualizer();
+            resetAudioBars();
+        }
+        
+        // Visualizador de audio
+        function startAudioVisualizer() {
+            if (animationId) return;
+            
+            function animate() {
+                audioBars.forEach(bar => {
+                    const randomHeight = 10 + Math.random() * 30;
+                    bar.style.height = randomHeight + 'px';
+                    bar.style.backgroundColor = getRandomColor();
+                });
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+        
+        function stopAudioVisualizer() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        }
+        
+        function resetAudioBars() {
+            audioBars.forEach(bar => {
+                bar.style.height = '10px';
+                bar.style.backgroundColor = '#4caf50';
+            });
+        }
+        
+        function getRandomColor() {
+            const colors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#3F51B5'];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
         
         // Animaciones al cargar
@@ -443,19 +554,23 @@
                 card.style.animationDelay = `${index * 0.2}s`;
             });
             
-            // Animación después de 2 segundos
+            // Animación de color después de 2 segundos
             setTimeout(() => {
-                document.querySelector('h2').style.color = '#ff5722';
+                const h2 = document.querySelector('h2');
+                h2.style.color = '#ff5722';
                 setTimeout(() => {
-                    document.querySelector('h2').style.color = '#2e7d32';
+                    h2.style.color = '#2e7d32';
                 }, 1000);
             }, 2000);
             
             // Dibujar gráfica inicial
             drawChart();
+            
+            // Mostrar que el audio está listo
+            audioStatus.textContent = 'Audio listo. Haz clic en Reproducir';
         });
         
-        // Canvas
+        // Canvas - Gráfica de nutrición
         const canvas = document.getElementById('nutritionChart');
         const ctx = canvas.getContext('2d');
         
@@ -472,8 +587,9 @@
             let startAngle = 0;
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
-            const radius = Math.min(centerX, centerY) - 20;
+            const radius = Math.min(centerX, centerY) - 30;
             
+            // Dibujar gráfico de pastel
             data.forEach(item => {
                 const sliceAngle = (item.value / 100) * 2 * Math.PI * progress;
                 
@@ -482,23 +598,43 @@
                 ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
                 ctx.closePath();
                 
-                ctx.fillStyle = item.color;
+                ctx.fillStyle = item.color + '80'; // 80 = 50% de opacidad
                 ctx.fill();
                 
+                // Borde
+                ctx.strokeStyle = item.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
                 startAngle += sliceAngle;
+            });
+            
+            // Leyenda
+            const legendY = canvas.height - 20;
+            data.forEach((item, index) => {
+                ctx.fillStyle = item.color;
+                ctx.fillRect(20, legendY - (index * 25), 15, 15);
+                
+                ctx.fillStyle = '#333';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(`${item.label}: ${item.value}%`, 40, legendY - (index * 25) + 12);
             });
         }
         
         function animateChart() {
             let progress = 0;
-            const duration = 1000;
+            const duration = 1500;
             const startTime = Date.now();
             
             function animate() {
                 const elapsed = Date.now() - startTime;
                 progress = Math.min(elapsed / duration, 1);
                 
-                drawChart(progress);
+                // Easing function para animación suave
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                
+                drawChart(easedProgress);
                 
                 if (progress < 1) {
                     requestAnimationFrame(animate);
@@ -519,6 +655,11 @@
                 
                 this.classList.add('active');
                 document.getElementById(sectionId).classList.add('active');
+                
+                // Detener audio si está reproduciendo
+                if (!audio.paused) {
+                    pauseAudio();
+                }
             });
         });
         
