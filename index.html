@@ -220,15 +220,43 @@
             justify-content: center;
             gap: 4px;
             margin-top: 1rem;
-            height: 40px;
+            height: 60px;
             align-items: flex-end;
         }
 
         .audio-bar {
-            width: 8px;
-            background-color: #4caf50;
+            width: 10px;
+            background: linear-gradient(to top, #4caf50, #81c784);
+            border-radius: 5px;
+            transition: height 0.2s ease;
+        }
+
+        .volume-control {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 150px;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #c8e6c9;
             border-radius: 4px;
-            transition: height 0.3s ease;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4caf50;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         .canvas-container {
@@ -260,6 +288,7 @@
             margin-top: 1rem;
             font-style: italic;
             color: #666;
+            min-height: 24px;
         }
 
         @media (max-width: 768px) {
@@ -331,15 +360,19 @@
                 </div>
             </div>
             
-            <!-- Sección de Audio CORREGIDA -->
+            <!-- Sección de Audio con música más relajante -->
             <div class="audio-section">
                 <h3>🎵 Música Relajante para Meditación</h3>
-                <p>Escucha esta música relajante para ayudarte en tu práctica de meditación diaria.</p>
+                <p>Escucha esta música suave con sonidos de naturaleza para tu práctica de meditación.</p>
                 
-                <!-- Elemento de audio con fuente alternativa -->
-                <audio id="meditation-audio" preload="auto">
-                    <source src="https://assets.mixkit.co/music/preview/mixkit-meditation-ambience-309.mp3" type="audio/mpeg">
-                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                <!-- Elemento de audio con música más relajante -->
+                <audio id="meditation-audio" preload="auto" loop>
+                    <!-- Música muy relajante con sonidos de naturaleza -->
+                    <source src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_9ef3b2cfa4.mp3?filename=relaxing-music-with-nature-sounds-166575.mp3" type="audio/mpeg">
+                    <!-- Fuente alternativa 1 - Música de piano relajante -->
+                    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_93f5c1c9a9.mp3?filename=relaxing-piano-amp-strings-113154.mp3" type="audio/mpeg">
+                    <!-- Fuente alternativa 2 - Sonidos de agua y pájaros -->
+                    <source src="https://assets.mixkit.co/music/preview/mixkit-nature-ambience-619.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
                 
@@ -347,6 +380,13 @@
                     <button class="audio-btn" onclick="playAudio()">▶️ Reproducir</button>
                     <button class="audio-btn" onclick="pauseAudio()">⏸️ Pausar</button>
                     <button class="audio-btn stop" onclick="stopAudio()">⏹️ Detener</button>
+                </div>
+                
+                <!-- Control de volumen -->
+                <div class="volume-control">
+                    <span>🔉</span>
+                    <input type="range" min="0" max="1" step="0.1" value="0.5" class="volume-slider" id="volume-slider">
+                    <span>🔊</span>
                 </div>
                 
                 <!-- Visualizador de audio -->
@@ -358,10 +398,13 @@
                     <div class="audio-bar"></div>
                     <div class="audio-bar"></div>
                     <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
+                    <div class="audio-bar"></div>
                 </div>
                 
                 <div class="audio-status" id="audio-status">
-                    Audio listo para reproducir
+                    Música relajante cargada. Lista para reproducir.
                 </div>
             </div>
         </section>
@@ -466,61 +509,100 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Salud y Bienestar - Evaluación 1</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Audio funcional con controles JavaScript</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Música relajante con sonidos de naturaleza</p>
         </div>
     </footer>
 
     <script>
-        // CONTROL DE AUDIO CORREGIDO
+        // CONTROL DE AUDIO CON MÚSICA RELAJANTE
         const audio = document.getElementById('meditation-audio');
         const audioStatus = document.getElementById('audio-status');
+        const volumeSlider = document.getElementById('volume-slider');
         const audioBars = document.querySelectorAll('.audio-bar');
         let animationId = null;
         
-        // Configurar el audio
-        audio.addEventListener('canplaythrough', function() {
-            audioStatus.textContent = 'Audio cargado y listo para reproducir';
+        // Configurar volumen inicial
+        audio.volume = 0.5;
+        volumeSlider.value = 0.5;
+        
+        // Control de volumen
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = this.value;
         });
         
-        audio.addEventListener('error', function() {
-            audioStatus.textContent = 'Error al cargar el audio. Intentando fuente alternativa...';
-            // El audio tiene una segunda fuente en el HTML
+        // Configurar el audio
+        audio.addEventListener('canplaythrough', function() {
+            audioStatus.textContent = 'Música relajante cargada. Lista para reproducir.';
+        });
+        
+        audio.addEventListener('play', function() {
+            audioStatus.textContent = 'Reproduciendo música relajante...';
+            startRelaxingAudioVisualizer();
+        });
+        
+        audio.addEventListener('pause', function() {
+            audioStatus.textContent = 'Música pausada';
+            stopAudioVisualizer();
+        });
+        
+        audio.addEventListener('ended', function() {
+            audioStatus.textContent = 'Música finalizada. Reiniciando...';
+            setTimeout(() => {
+                audio.currentTime = 0;
+                audio.play();
+            }, 1000);
+        });
+        
+        audio.addEventListener('error', function(e) {
+            console.error('Error de audio:', e);
+            audioStatus.textContent = 'Error al cargar la música. Intentando fuente alternativa...';
         });
         
         function playAudio() {
             audio.play().then(() => {
-                audioStatus.textContent = 'Reproduciendo...';
-                startAudioVisualizer();
+                audioStatus.textContent = 'Reproduciendo música relajante...';
             }).catch(error => {
-                audioStatus.textContent = 'Error: ' + error.message;
-                console.error('Error al reproducir:', error);
+                audioStatus.textContent = 'Haz clic en Reproducir nuevamente para activar el audio';
+                console.log('Nota: Algunos navegadores requieren interacción del usuario para reproducir audio');
             });
         }
         
         function pauseAudio() {
             audio.pause();
-            audioStatus.textContent = 'Pausado';
+            audioStatus.textContent = 'Música pausada';
             stopAudioVisualizer();
         }
         
         function stopAudio() {
             audio.pause();
             audio.currentTime = 0;
-            audioStatus.textContent = 'Detenido';
+            audioStatus.textContent = 'Música detenida';
             stopAudioVisualizer();
             resetAudioBars();
         }
         
-        // Visualizador de audio
-        function startAudioVisualizer() {
+        // Visualizador de audio más relajante
+        function startRelaxingAudioVisualizer() {
             if (animationId) return;
             
             function animate() {
-                audioBars.forEach(bar => {
-                    const randomHeight = 10 + Math.random() * 30;
-                    bar.style.height = randomHeight + 'px';
-                    bar.style.backgroundColor = getRandomColor();
+                audioBars.forEach((bar, index) => {
+                    // Patrón de onda más suave y relajante
+                    const time = Date.now() * 0.001;
+                    const wave1 = Math.sin(time * 0.5 + index * 0.5) * 0.5 + 0.5;
+                    const wave2 = Math.sin(time * 0.3 + index * 0.7) * 0.3 + 0.3;
+                    const wave3 = Math.sin(time * 0.8 + index * 0.2) * 0.2 + 0.2;
+                    
+                    const height = 10 + (wave1 + wave2 + wave3) * 40;
+                    bar.style.height = height + 'px';
+                    
+                    // Colores relajantes que cambian gradualmente
+                    const hue = (time * 10 + index * 20) % 360;
+                    bar.style.background = `linear-gradient(to top, 
+                        hsl(${hue}, 70%, 60%), 
+                        hsl(${(hue + 30) % 360}, 70%, 70%))`;
                 });
+                
                 animationId = requestAnimationFrame(animate);
             }
             
@@ -537,13 +619,8 @@
         function resetAudioBars() {
             audioBars.forEach(bar => {
                 bar.style.height = '10px';
-                bar.style.backgroundColor = '#4caf50';
+                bar.style.background = 'linear-gradient(to top, #4caf50, #81c784)';
             });
-        }
-        
-        function getRandomColor() {
-            const colors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#3F51B5'];
-            return colors[Math.floor(Math.random() * colors.length)];
         }
         
         // Animaciones al cargar
@@ -554,20 +631,21 @@
                 card.style.animationDelay = `${index * 0.2}s`;
             });
             
-            // Animación de color después de 2 segundos
-            setTimeout(() => {
-                const h2 = document.querySelector('h2');
-                h2.style.color = '#ff5722';
-                setTimeout(() => {
-                    h2.style.color = '#2e7d32';
-                }, 1000);
-            }, 2000);
+            // Animación de color suave para los títulos
+            let hue = 120; // Verde inicial
+            setInterval(() => {
+                hue = (hue + 0.5) % 360;
+                const titles = document.querySelectorAll('h2');
+                titles.forEach(title => {
+                    title.style.color = `hsl(${hue}, 70%, 30%)`;
+                });
+            }, 100);
             
             // Dibujar gráfica inicial
             drawChart();
             
             // Mostrar que el audio está listo
-            audioStatus.textContent = 'Audio listo. Haz clic en Reproducir';
+            audioStatus.textContent = 'Música relajante cargada. Lista para reproducir.';
         });
         
         // Canvas - Gráfica de nutrición
@@ -589,50 +667,70 @@
             const centerY = canvas.height / 2;
             const radius = Math.min(centerX, centerY) - 30;
             
-            // Dibujar gráfico de pastel
+            // Dibujar gráfico de pastel con efectos suaves
             data.forEach(item => {
                 const sliceAngle = (item.value / 100) * 2 * Math.PI * progress;
+                
+                // Sombra suave
+                ctx.save();
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetY = 2;
                 
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
                 ctx.closePath();
                 
-                ctx.fillStyle = item.color + '80'; // 80 = 50% de opacidad
+                // Gradiente suave
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                gradient.addColorStop(0, item.color + 'CC');
+                gradient.addColorStop(1, item.color + '66');
+                
+                ctx.fillStyle = gradient;
                 ctx.fill();
                 
-                // Borde
+                // Borde suave
                 ctx.strokeStyle = item.color;
                 ctx.lineWidth = 2;
                 ctx.stroke();
                 
+                ctx.restore();
+                
                 startAngle += sliceAngle;
             });
             
-            // Leyenda
+            // Leyenda con efectos suaves
             const legendY = canvas.height - 20;
             data.forEach((item, index) => {
-                ctx.fillStyle = item.color;
-                ctx.fillRect(20, legendY - (index * 25), 15, 15);
+                // Círculo con gradiente
+                ctx.beginPath();
+                ctx.arc(25, legendY - (index * 25) - 7, 8, 0, Math.PI * 2);
+                const circleGradient = ctx.createRadialGradient(25, legendY - (index * 25) - 7, 0, 25, legendY - (index * 25) - 7, 8);
+                circleGradient.addColorStop(0, item.color + 'FF');
+                circleGradient.addColorStop(1, item.color + '88');
+                ctx.fillStyle = circleGradient;
+                ctx.fill();
                 
+                // Texto suave
                 ctx.fillStyle = '#333';
-                ctx.font = '12px Arial';
+                ctx.font = 'bold 12px Arial';
                 ctx.textAlign = 'left';
-                ctx.fillText(`${item.label}: ${item.value}%`, 40, legendY - (index * 25) + 12);
+                ctx.fillText(`${item.label}: ${item.value}%`, 40, legendY - (index * 25));
             });
         }
         
         function animateChart() {
             let progress = 0;
-            const duration = 1500;
+            const duration = 1800;
             const startTime = Date.now();
             
             function animate() {
                 const elapsed = Date.now() - startTime;
                 progress = Math.min(elapsed / duration, 1);
                 
-                // Easing function para animación suave
-                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                // Easing function suave
+                const easedProgress = 1 - Math.pow(1 - progress, 4);
                 
                 drawChart(easedProgress);
                 
@@ -656,7 +754,7 @@
                 this.classList.add('active');
                 document.getElementById(sectionId).classList.add('active');
                 
-                // Detener audio si está reproduciendo
+                // Pausar música si está reproduciendo
                 if (!audio.paused) {
                     pauseAudio();
                 }
